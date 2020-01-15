@@ -2,26 +2,28 @@ body {
     font-family: "sans-serif";
 }
 
-input[type=range] {
+/*input[type=range] {
     border: 4px;
     border-color: #f00;
-}
+}*/
 
 fieldset {
     width: 300px;
 }
 
 .content {
-    
 
-input[type=range]::-moz-range-track {
+}
+
+/*input[type=range]::-moz-range-track {
     height: 1px;
     border: 0.2px solid #010101;
-}
+}*/
 
 .collapseControl {
     color: white;
     width: 200px;
+    padding: 4px;
     display: block;
     text-align: left;
     background-color: grey;
