@@ -8,40 +8,64 @@
     <link rel="stylesheet" href="style.css">
     
     <script src="jquery-1.11.3.min.js"></script>
-    <script language="javascript" type="text/javascript">
-      $( document ).ready( function() {
-        $( "input" ).change( function() {
-          let data = {};
-          $( "input" ).each(function(index,element) {
-            data[$(element).attr('name')] = $(element).val();
-          });
-          $.ajax({
-            url: '/update',
-            method: 'POST',
-            dataType: 'html',
-            data: data,
-          });
-          return false;
-        });
-      });
-    </script>
+    <script src="control.js"></script>
   </head>
   <body>
-    <div>
+    <div class="content">
       <fieldset>
-        <legend>Settings</legend>
-        <label>Distance 1:</label>
-        <input type="range" name="dist1" min="0" max="1000" value="<!--#call dist1 -->">
-        <br>
-        <label>Distance 2:</label>
-        <input type="range" name="dist2" min="0" max="1000" value="<!--#call dist2 -->">
-        <br>
-        <label>Distance 3:</label>
-        <input type="range" name="dist3" min="0" max="1000" value="<!--#call dist3 -->">
-        <br>
-        <label>Distance 4:</label>
-        <input type="range" name="dist4" min="0" max="1000" value="<!--#call dist4 -->">
+        <legend>Distance</legend>
+        <input type="range" id="distanceMaster" min="0" max="1" step="0.01">
+        <button type="button" class="collapseControl" id="distanceCollapseControl">Show details</button> 
+        <div class="collapsible" id="distanceCollapsible">
+          <label>Distance 1:</label>
+          <input type="range" name="distance1" min="0" max="1" step="0.01" value="<!--#call distance1 -->">
+          <br>
+          <label>Distance 2:</label>
+          <input type="range" name="distance2" min="0" max="1" step="0.01" value="<!--#call distance2 -->">
+          <br>
+          <label>Distance 3:</label>
+          <input type="range" name="distance3" min="0" max="1" step="0.01" value="<!--#call distance3 -->">
+          <br>
+          <label>Distance 4:</label>
+          <input type="range" name="distance4" min="0" max="1" step="0.01" value="<!--#call distance4 -->">
+        </div>
       </fieldset>
+      <fieldset>
+        <legend>Size</legend>
+        <input type="range" id="sizeMaster" min="0" max="1" step="0.01">
+        <button type="button" class="collapseControl">Show details</button> 
+        <div class="collapsible">
+          <label>Size 1:</label>
+          <input type="range" name="size1" min="0" max="1" step="0.01" value="<!--#call size1 -->">
+          <br>
+          <label>Size 2:</label>
+          <input type="range" name="size2" min="0" max="1" step="0.01" value="<!--#call size2 -->">
+          <br>
+          <label>Size 3:</label>
+          <input type="range" name="size3" min="0" max="1" step="0.01" value="<!--#call size3 -->">
+          <br>
+          <label>Size 4:</label>
+          <input type="range" name="size4" min="0" max="1" step="0.01" value="<!--#call size4 -->">
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Rotation</legend>
+        <input type="range" id="rotationMaster" min="0" max="1" step="0.01">
+        <button type="button" class="collapseControl">Show details</button> 
+        <div class="collapsible">
+          <label>Rotation 1:</label>
+          <input type="range" name="rotation1" min="0" max="1" step="0.01" value="<!--#call rotation1 -->">
+          <br>
+          <label>Rotation 2:</label>
+          <input type="range" name="rotation2" min="0" max="1" step="0.01" value="<!--#call rotation2 -->">
+          <br>
+          <label>Rotation 3:</label>
+          <input type="range" name="rotation3" min="0" max="1" step="0.01" value="<!--#call rotation3 -->">
+          <br>
+          <label>Rotation 4:</label>
+          <input type="range" name="rotation4" min="0" max="1" step="0.01" value="<!--#call rotation4 -->">
+        </div>
+      </fieldset>      
     </div>
   </body>
 </html>
