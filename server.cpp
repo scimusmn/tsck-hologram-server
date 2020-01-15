@@ -1,4 +1,5 @@
-#include "server.h"
+#include "server.hpp"
+#include <iostream>
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -12,11 +13,18 @@ static void event_handler(struct mg_connection*, int, void*);
 static settings* s;
 static const char* http_port = "8000";
 static struct mg_serve_http_opts http_server_options;
+static std::mutex* stdout_mutex;
+static std::mutex* settings_mutex;
+static std::mutex* running_mutex;
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-void launch_server(int argc, char** argv, settings* s_, int* running) {
+void launch_server(int argc, char** argv, settings* s_, bool* running,
+                   std::mutex* stdout_mutex_, std::mutex* settings_mutex_, std::mutex* running_mutex_) {
   s = s_;
+  stdout_mutex = stdout_mutex_;
+  settings_mutex = settings_mutex_;
+  running_mutex = running_mutex_;
   
   struct mg_mgr event_manager;
   struct mg_connection* connection;
@@ -34,16 +42,25 @@ void launch_server(int argc, char** argv, settings* s_, int* running) {
     http_server_options.document_root = path;
   }
 
+  stdout_mutex->lock();
+  std::cout << "starting hologram server on port " << http_port << std::endl;
+  stdout_mutex->unlock();
+
   while(*running) {
     mg_mgr_poll(&event_manager,1000);
   }
   mg_mgr_free(&event_manager);
+
+  stdout_mutex->lock();
+  std::cout << "shut down server" << std::endl;
+  stdout_mutex->unlock();
 
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 static void print_settings(settings* s) {
+  stdout_mutex->lock();
   printf(" == SETTINGS == \nDistance: ( %f, %f, %f, %f )\nSize:     ( %f, %f, %f, %f )\nRotation: ( %f, %f, %f, %f )\n\n",
          s->distance1,
          s->distance2,
@@ -59,12 +76,14 @@ static void print_settings(settings* s) {
          s->rotation2,
          s->rotation3,
          s->rotation4);
+  stdout_mutex->unlock();
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 static void update_settings(struct mg_connection* connection,
                             struct http_message* message) {
+  settings_mutex->lock();
   char tmp[32];
   mg_get_http_var(&message->body, "distance1", tmp, sizeof(tmp));
   s->distance1 = atof(tmp);
@@ -94,6 +113,8 @@ static void update_settings(struct mg_connection* connection,
   s->rotation4 = atof(tmp);
 
   print_settings(s);
+
+  settings_mutex->unlock();
   
   // respond
   mg_printf(connection, "HTTP/1.1 200 OK\r\nContent-Length: %lu\r\nContent-Type: application/x-www-form-urlencoded; charset=UTF-8\r\n\r\n%.*s",
@@ -106,6 +127,7 @@ static void update_settings(struct mg_connection* connection,
 
 static void handle_ssi_call(struct mg_connection* connection,
                             const char* parameter) {
+  settings_mutex->lock();
   char tmp[32];
   if (strcmp(parameter, "distance1") == 0) {
     mg_printf_html_escape(connection, "%f", s->distance1);
@@ -145,6 +167,7 @@ static void handle_ssi_call(struct mg_connection* connection,
   else if (strcmp(parameter, "rotation4") == 0) {
     mg_printf_html_escape(connection, "%f", s->rotation4);
   }
+  settings_mutex->unlock();
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

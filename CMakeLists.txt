@@ -7,5 +7,5 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GXX_COMPILE_FLAGS}")
 
 project(hologram)
 
-add_executable(hologram server.c mg/mongoose.c hologram.cpp)
+add_executable(hologram video_player.cpp server.cpp mg/mongoose.c hologram.cpp)
 target_link_libraries(hologram ssl crypto ws2_32 ${OpenCV_LIBS})
