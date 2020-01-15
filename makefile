@@ -1,0 +1,3 @@
+PROG = hologram
+MODULE_CFLAGS=-DMG_DISABLE_DAV_AUTH -DMG_ENABLE_FAKE_DAVLOCK
+include mg/mongoose.mk

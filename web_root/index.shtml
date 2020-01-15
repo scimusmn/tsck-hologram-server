@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Hologram Server Configuration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" href="style.css">
+    
+    <script src="jquery-1.11.3.min.js"></script>
+    <script language="javascript" type="text/javascript">
+      $( document ).ready( function() {
+        $( "input" ).change( function() {
+          let data = {};
+          $( "input" ).each(function(index,element) {
+            data[$(element).attr('name')] = $(element).val();
+          });
+          $.ajax({
+            url: '/update',
+            method: 'POST',
+            dataType: 'html',
+            data: data,
+          });
+          return false;
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div>
+      <fieldset>
+        <legend>Settings</legend>
+        <label>Distance 1:</label>
+        <input type="range" name="dist1" min="0" max="1000" value="<!--#call dist1 -->">
+        <br>
+        <label>Distance 2:</label>
+        <input type="range" name="dist2" min="0" max="1000" value="<!--#call dist2 -->">
+        <br>
+        <label>Distance 3:</label>
+        <input type="range" name="dist3" min="0" max="1000" value="<!--#call dist3 -->">
+        <br>
+        <label>Distance 4:</label>
+        <input type="range" name="dist4" min="0" max="1000" value="<!--#call dist4 -->">
+      </fieldset>
+    </div>
+  </body>
+</html>
+
+                         
