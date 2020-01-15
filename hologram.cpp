@@ -85,17 +85,13 @@ static void update_settings(struct mg_connection* connection,
                             struct http_message* message) {
   char tmp[32];
   mg_get_http_var(&message->body, "distance1", tmp, sizeof(tmp));
-  printf("%s\n",tmp);
   s.distance1 = atof(tmp);
   mg_get_http_var(&message->body, "distance2", tmp, sizeof(tmp));
   s.distance2 = atof(tmp);
-  printf("%s\n",tmp);
   mg_get_http_var(&message->body, "distance3", tmp, sizeof(tmp));
   s.distance3 = atof(tmp);
-  printf("%s\n",tmp);
   mg_get_http_var(&message->body, "distance4", tmp, sizeof(tmp));
   s.distance4 = atof(tmp);
-  printf("%s\n",tmp);
 
   mg_get_http_var(&message->body, "size1", tmp, sizeof(tmp));
   s.size1 = atof(tmp);
@@ -115,7 +111,6 @@ static void update_settings(struct mg_connection* connection,
   mg_get_http_var(&message->body, "rotation4", tmp, sizeof(tmp));
   s.rotation4 = atof(tmp);
 
-  printf("received \"%s\"\n",message->message.p);
   print_settings(s);
   
   // respond
