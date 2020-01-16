@@ -19,8 +19,11 @@ $( document ).ready( function() {
   // send data to server as sliders are moved
   $( "input[type=range]" ).change( function() {
     let data = {};
-    $( "input" ).each(function(index,element) {
-      data[$(element).attr('name')] = $(element).val();
+    $( 'input[id*="Master"]' ).each(function(index,element) {
+      let alpha = Number($(element).val());
+      $(element).siblings('div').children('input').each(function(index,element) {
+        data[$(element).attr('name')] = alpha*Number($(element).val());
+      });
     });
     $.ajax({
       url: '/update',

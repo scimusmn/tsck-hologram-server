@@ -14,56 +14,56 @@
     <div class="content">
       <fieldset>
         <legend>Distance</legend>
-        <input type="range" id="distanceMaster" min="0" max="1" step="0.01">
+        <input type="range" id="distanceMaster" min="0" max="1" step="0.01" value="1">
         <button type="button" class="collapseControl" id="distanceCollapseControl">Show details</button> 
         <div class="collapsible" id="distanceCollapsible">
           <label>Distance 1:</label>
-          <input type="range" name="distance1" min="0" max="1" step="0.01" value="<!--#call distance1 -->">
+          <input type="range" class="distanceRange" name="distance1" min="0" max="1" step="0.01" value="<!--#call distance1 -->">
           <br>
           <label>Distance 2:</label>
-          <input type="range" name="distance2" min="0" max="1" step="0.01" value="<!--#call distance2 -->">
+          <input type="range" class="distanceRange" name="distance2" min="0" max="1" step="0.01" value="<!--#call distance2 -->">
           <br>
           <label>Distance 3:</label>
-          <input type="range" name="distance3" min="0" max="1" step="0.01" value="<!--#call distance3 -->">
+          <input type="range" class="distanceRange" name="distance3" min="0" max="1" step="0.01" value="<!--#call distance3 -->">
           <br>
           <label>Distance 4:</label>
-          <input type="range" name="distance4" min="0" max="1" step="0.01" value="<!--#call distance4 -->">
+          <input type="range" class="distanceRange" name="distance4" min="0" max="1" step="0.01" value="<!--#call distance4 -->">
         </div>
       </fieldset>
       <fieldset>
         <legend>Size</legend>
-        <input type="range" id="sizeMaster" min="0" max="1" step="0.01">
+        <input type="range" id="sizeMaster" min="0.1" max="0.5" step="0.01" value="0.5">
         <button type="button" class="collapseControl">Show details</button> 
         <div class="collapsible">
           <label>Size 1:</label>
-          <input type="range" name="size1" min="0" max="1" step="0.01" value="<!--#call size1 -->">
+          <input type="range" class="sizeRange" name="size1" min="0.1" max="1" step="0.01" value="<!--#call size1 -->">
           <br>
           <label>Size 2:</label>
-          <input type="range" name="size2" min="0" max="1" step="0.01" value="<!--#call size2 -->">
+          <input type="range" class="sizeRange" name="size2" min="0.1" max="1" step="0.01" value="<!--#call size2 -->">
           <br>
           <label>Size 3:</label>
-          <input type="range" name="size3" min="0" max="1" step="0.01" value="<!--#call size3 -->">
+          <input type="range" class="sizeRange" name="size3" min="0.1" max="1" step="0.01" value="<!--#call size3 -->">
           <br>
           <label>Size 4:</label>
-          <input type="range" name="size4" min="0" max="1" step="0.01" value="<!--#call size4 -->">
+          <input type="range" class="sizeRange" name="size4" min="0.1" max="1" step="0.01" value="<!--#call size4 -->">
         </div>
       </fieldset>
       <fieldset>
         <legend>Rotation</legend>
-        <input type="range" id="rotationMaster" min="0" max="1" step="0.01">
+        <input type="range" id="rotationMaster" min="0" max="1" step="0.01" value="0">
         <button type="button" class="collapseControl">Show details</button> 
         <div class="collapsible">
           <label>Rotation 1:</label>
-          <input type="range" name="rotation1" min="0" max="1" step="0.01" value="<!--#call rotation1 -->">
+          <input type="range" class="rotationRange" name="rotation1" min="0" max="1" step="0.01" value="<!--#call rotation1 -->">
           <br>
           <label>Rotation 2:</label>
-          <input type="range" name="rotation2" min="0" max="1" step="0.01" value="<!--#call rotation2 -->">
+          <input type="range" class="rotationRange" name="rotation2" min="0" max="1" step="0.01" value="<!--#call rotation2 -->">
           <br>
           <label>Rotation 3:</label>
-          <input type="range" name="rotation3" min="0" max="1" step="0.01" value="<!--#call rotation3 -->">
+          <input type="range" class="rotationRange" name="rotation3" min="0" max="1" step="0.01" value="<!--#call rotation3 -->">
           <br>
           <label>Rotation 4:</label>
-          <input type="range" name="rotation4" min="0" max="1" step="0.01" value="<!--#call rotation4 -->">
+          <input type="range" class="rotationRange" name="rotation4" min="0" max="1" step="0.01" value="<!--#call rotation4 -->">
         </div>
       </fieldset>      
     </div>
