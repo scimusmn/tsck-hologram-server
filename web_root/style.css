@@ -1,5 +1,6 @@
 body {
     font-family: "sans-serif";
+    background-color: #444;
 }
 
 /*input[type=range] {
@@ -8,11 +9,16 @@ body {
 }*/
 
 fieldset {
+    margin: auto;
     width: 300px;
 }
 
 .content {
-
+    background-color: white;
+    margin: auto;
+    width: 50%;
+    padding: 16px;
+    border-radius: 4px;
 }
 
 /*input[type=range]::-moz-range-track {
@@ -22,6 +28,7 @@ fieldset {
 
 .collapseControl {
     color: white;
+    margin: auto;
     width: 200px;
     padding: 4px;
     display: block;
