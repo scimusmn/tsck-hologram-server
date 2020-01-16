@@ -7,6 +7,10 @@ set(CMAKE_CXX_STANDARD 11)
 find_package(OpenCV REQUIRED)
 find_package(Threads REQUIRED)
 
+if(NOT WIN32)
+  find_package(X11 REQUIRED)
+endif()
+
 set(GXX_COMPILE_FLAGS "-fpermissive")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${GXX_COMPILE_FLAGS}")
 
@@ -15,6 +19,8 @@ add_executable(hologram video_player.cpp server.cpp mg/mongoose.c hologram.cpp)
 target_link_libraries(hologram ssl crypto Threads::Threads ${OpenCV_LIBS})
 
 if(WIN32)
-        target_link_libraries(hologram ws2_32)
+  target_link_libraries(hologram ws2_32)
+else()
+  target_link_libraries(hologram ${X11_LIBRARIES})
 endif()       
 
