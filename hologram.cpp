@@ -17,7 +17,7 @@ using namespace cv;
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 int main(int argc, char** argv) {
-  settings s = { 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0, 0, 0, 0 };
+  settings s = { 1, 1, 1, 1, 0.25, 0.25, 0.25, 0.25, 0, 0, 0, 0 };
   mutex stdout_mutex, settings_mutex, running_mutex;
 
   char* video_file = "bionic-arm.mov";

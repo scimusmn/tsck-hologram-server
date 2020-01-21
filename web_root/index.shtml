@@ -14,7 +14,7 @@
     <div class="content">
       <fieldset>
         <legend>Distance</legend>
-        <input type="range" id="distanceMaster" min="0" max="1" step="0.01" value="1">
+        <input type="range" id="distanceMaster" min="0" max="1" step="0.01" value="0.5">
         <button type="button" class="collapseControl" id="distanceCollapseControl">Show details</button> 
         <div class="collapsible" id="distanceCollapsible">
           <label>Distance 1:</label>
